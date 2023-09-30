@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h1 style="display:inline-block;">Welcome </h1><h1 style="display:inline-block; padding:12px;">{{username}}</h1>
+    <p>Activity Aggregation is a platform designed to help you track your progress in long-term races that span over months
+        or even years. Your race position is displayed on an interactive map, continuously updated after each recorded activity.</p>
+
+    <p>To get started, explore the available races through the menu bar and contribute your own activities.</p>
+
+    <div class="indexText">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>SwimYaleHarvard</h4>
+                    <p>Embark on a challenging swimming journey, starting at Yale's Gilder Boathouse, and navigate your way south to the Long Island
+                        Sound. Continue your aquatic adventure all the way around to Massachusetts Bay, where you'll eventually reach the Charles River,
+                        concluding your race at the Newell Boathouse at Harvard.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>RunMarcoPolo</h4>
+                    <p>If running is more your style, take on the epic route of Marco Polo. This race commences in the historic city of Venice, Italy,
+                        and traces the ancient Silk Road until you reach the vibrant city of Beijing, China. It's a route once celebrated as the Grand
+                        Capital of the Yuan Dynasty during Kublai Khan's reign.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>CycleCheGuevara</h4>
+                    <p>For cycling enthusiasts, follow in the footsteps of Che Guevara's Motorcycle Diaries. This adventurous journey kicks off in Córdoba,
+                        Argentina, and winds its way through captivating landscapes across Chile, Bolivia, Peru, Colombia, and concludes in the bustling
+                        metropolis of Caracas, Venezuela.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/add" class="btn btn-outline-primary btn-lg">Add Activity</a>
+
+    <p>For future enhancements, other CS50 students could consider implementing features such as a more precise marker placement on the map,
+        creating a global circumnavigation route that combines various activities like swimming, rowing, running, cycling, and hiking,
+        engaging in friendly competitions with friends, family, or your community to visualize everyone's positions on the map, sending emails
+        or some kind of updates as users arrive at major cities along their routes, or the ambitious yet valuable task of integrating with the Strava or Garmin APIs for automatic
+        activity updates. This integration would allow users to effortlessly monitor their progress on the map without the need for manual
+        data entry.</p>
+
+
+
+
+
+
+{% endblock %}

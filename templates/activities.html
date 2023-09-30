@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Activities
+{% endblock %}
+
+{% block main %}
+    <h1>{{username}}'s Progress</h1>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Race</th>
+                <th scope="col">Kilometers Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for totalactivity in totalactivities %}
+            <tr>
+                <td>{{totalactivity["race_name"]}}</td>
+                <td>{{totalactivity["totalkilometers"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/add" class="btn btn-outline-primary btn-lg">Add Activity</a>
+
+    <h1>All Activities</h1>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Race</th>
+                    <th scope="col">Date/Time</th>
+                    <th scope="col">Meters</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for activity in activities %}
+                <tr>
+                    <td>{{activity["race_name"]}}</td>
+                    <td>{{activity["time_stamp"]}}</td>
+                    <td>{{activity["meters"]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

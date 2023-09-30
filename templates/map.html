@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Map
+{% endblock %}
+
+{% block main %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script>
+        // Create a JavaScript object from Flask data
+        var totalActivitiesData = {
+            {% for totalactivity in totalactivities %}
+            "{{ totalactivity["race_name"] }}": {{ totalactivity["totalkilometers"] }},
+            {% endfor %}
+        };
+
+        // Add missing races with a value of 0
+        var availableRaces = ["SwimYaleHarvard", "RunMarcoPolo", "CycleCheGuevara"];
+        for (var i = 0; i < availableRaces.length; i++) {
+            var raceName = availableRaces[i];
+            if (!(raceName in totalActivitiesData)) {
+                totalActivitiesData[raceName] = 0;
+            }
+        }
+    </script>
+    <body>
+        <h1>Progress Map</h1>
+        <div id="map" style="height: 400px;"></div>
+
+        <div class="mapDetails">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div classs="select-container">
+                            <select id="routeSelector">
+                                <option value="route1">Swim: Yale Harvard</option>
+                                <option value="route2">Run: Marco Polo</option>
+                                <option value="route3">Cycle: Che Guvara</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div style="text-align:right;">
+                                        <p>RACE:</p>
+                                        <p>LENGTH:</p>
+                                        <p>KM COMPLETED:</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="text-align:left;">
+                                        <p><span id="routeName">CycleCheGuevara</span></p>
+                                        <p><span id="raceLength">368</span>km</p>
+                                        <p><span id="routeNumber">5.5</span>km</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="text-align:center;">
+                            <a href="/add" class="btn btn-outline-primary btn-lg">Add Activity</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.10.2/src/leaflet.geometryutil.min.js"></script>
+        <script type="module" src="/static/map.js"></script>
+   </body>
+{% endblock %}
