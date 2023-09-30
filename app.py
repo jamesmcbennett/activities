@@ -20,7 +20,14 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///database.db")
+#
+
+
+# Use the DATABASE_URL environment variable
+database_url = os.getenv("DATABASE_URL")
+
+# Connect to the database using the configured URL
+db = SQL(database_url)
 
 # Make sure API key is set
 # if not os.environ.get("API_KEY"):
